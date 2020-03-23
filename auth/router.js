@@ -20,6 +20,10 @@ router.post('/login', (req, res) => {
     Users.findBy({ username})
     .then(([user]) => {
         if(user && bcrypt.compareSynch(password, user.password)) {
+            req.session.user = {
+                id: user.id,
+                username: user.username
+            };
           res.status(200).json({ Hello: user.username});
         } else {
             res.status(401).json({ message: 'invalid credentials'});
