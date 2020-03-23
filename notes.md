@@ -1,0 +1,1 @@
+install bcrypt  npm i bcryptjs
